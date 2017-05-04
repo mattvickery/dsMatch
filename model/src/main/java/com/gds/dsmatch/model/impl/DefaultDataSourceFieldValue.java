@@ -16,7 +16,7 @@ public class DefaultDataSourceFieldValue<T extends Serializable> implements Data
     private final DataSourceFieldDefinition<T> dataSourceFieldDefinition;
     private final T dataSourceFieldValue;
 
-    private DefaultDataSourceFieldValue(final DataSourceFieldDefinition<T> dataSourceFieldDefinition,
+    public DefaultDataSourceFieldValue(final DataSourceFieldDefinition<T> dataSourceFieldDefinition,
                                         final T dataSourceFieldValue) {
 
         notNull(dataSourceFieldDefinition, "Mandatory argument 'dataSourceFieldDefinition' is missing.");

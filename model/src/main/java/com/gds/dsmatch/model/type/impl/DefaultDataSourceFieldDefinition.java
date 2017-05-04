@@ -15,7 +15,7 @@ public class DefaultDataSourceFieldDefinition<T extends Serializable> implements
     private final String fieldName;
     private final Class<T> fieldType;
 
-    private DefaultDataSourceFieldDefinition(final String fieldName, final Class<T> fieldType) {
+    public DefaultDataSourceFieldDefinition(final String fieldName, final Class<T> fieldType) {
 
         notNull(fieldName, "Mandatory argument 'fieldName' is missing.");
         notNull(fieldType, "Mandatory argument 'fieldType' is missing.");

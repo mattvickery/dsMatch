@@ -24,8 +24,9 @@ public class DecimalMatchingStrategy implements MatchingStrategyVisitor<BigDecim
     public boolean visit(final DataSourceFieldPairMatchValue<BigDecimal> dataSourceFieldPairMatchValue) {
 
         notNull(dataSourceFieldPairMatchValue, "Mandatory argument 'dataSourceFieldPairMatchValue' is missing.");
-        final List<MatchingStrategyVisitor<BigDecimal>> failures = matchingStrategies.stream().filter(
-                dataSourceFieldPairMatchValue::match).collect(Collectors.toList());
+        final List<MatchingStrategyVisitor<BigDecimal>> failures = matchingStrategies.stream()
+                .filter(dataSourceFieldPairMatchValue::match)
+                .collect(Collectors.toList());
         return failures.size() > 0;
     }
 }

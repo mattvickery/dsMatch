@@ -16,6 +16,7 @@ public class StringMatchingStrategy implements MatchingStrategyVisitor<String> {
     private final List<MatchingStrategyVisitor<String>> matchingStrategies;
 
     public StringMatchingStrategy(final List<MatchingStrategyVisitor<String>> matchingStrategies) {
+        notNull(matchingStrategies, "Mandatory argument 'matchingStrategies' is missing.");
         this.matchingStrategies = matchingStrategies;
     }
 
@@ -23,8 +24,9 @@ public class StringMatchingStrategy implements MatchingStrategyVisitor<String> {
     public boolean visit(final DataSourceFieldPairMatchValue<String> dataSourceFieldPairMatchValue) {
 
         notNull(dataSourceFieldPairMatchValue, "Mandatory argument 'dataSourceFieldPairMatchValue' is missing.");
-        final List<MatchingStrategyVisitor<String>> failures = matchingStrategies.stream().filter(
-                dataSourceFieldPairMatchValue::match).collect(Collectors.toList());
+        final List<MatchingStrategyVisitor<String>> failures = matchingStrategies.stream()
+                .filter(dataSourceFieldPairMatchValue::match)
+                .collect(Collectors.toList());
         return failures.size() > 0;
     }
 }

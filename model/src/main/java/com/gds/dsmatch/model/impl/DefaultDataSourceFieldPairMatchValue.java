@@ -18,10 +18,10 @@ public class DefaultDataSourceFieldPairMatchValue<T extends Serializable>
 
     private final DataSourceFieldValue<T> lhs;
     private final DataSourceFieldValue<T> rhs;
-    private boolean matched = false;
+    private boolean matched = true;
     private boolean matchInvocationCompleted = false;
 
-    private DefaultDataSourceFieldPairMatchValue(final DataSourceFieldValue<T> lhs,
+    public DefaultDataSourceFieldPairMatchValue(final DataSourceFieldValue<T> lhs,
                                                  final DataSourceFieldValue<T> rhs) {
 
         notNull(lhs, "Mandatory argument 'lhs' is missing.");
@@ -43,7 +43,7 @@ public class DefaultDataSourceFieldPairMatchValue<T extends Serializable>
     @Override
     public boolean getMatched() {
         state(matchInvocationCompleted, "Matching has not yet been invoked.");
-        return false;
+        return matched;
     }
 
     @Override
