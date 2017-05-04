@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.util.Assert.notNull;
+import static org.springframework.util.Assert.state;
 
 /**
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
@@ -41,6 +42,7 @@ public class StringMatchingStrategyBuilder {
     }
 
     public StringMatchingStrategy build() {
+        state(matchingStrategies.size() > 0, "No matching strategies have been configured.");
         return new StringMatchingStrategy(matchingStrategies);
     }
 }
