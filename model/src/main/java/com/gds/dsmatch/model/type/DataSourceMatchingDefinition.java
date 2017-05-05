@@ -9,6 +9,8 @@ import java.util.List;
 public interface DataSourceMatchingDefinition {
 
     List<MatchKeyDefinition> getMatchKeyDefinitions();
-    DataSourceFieldDefinition<?> getLhs();
-    DataSourceFieldDefinition<?> getRhs();
+
+    DataSourceRowDefinition getLhs();
+
+    DataSourceRowDefinition getRhs();
 }

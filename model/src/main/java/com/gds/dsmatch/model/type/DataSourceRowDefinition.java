@@ -9,6 +9,6 @@ import java.util.List;
 public interface DataSourceRowDefinition {
 
     List<DataSourceFieldDefinition<?>> getDataSourceFieldDefinitions();
-    List<DataSourceFieldDefinition<?>> getDataSourceFieldDefinitionByName();
+    List<DataSourceFieldDefinition<?>> getDataSourceFieldDefinitionByName(final String name);
     DataSourceRowDefinition add(final DataSourceFieldDefinition<?> dataSourceFieldDefinition);
 }

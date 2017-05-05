@@ -19,7 +19,7 @@ public class DefaultDataSourceMatchValue implements DataSourceMatchValue {
     private final DataSourceMatchingDefinition dataSourceMatchingDefinition;
     private final List<DataSourceRowMatchValue> dataSourceRowMatchValues = new ArrayList<>();
 
-    private DefaultDataSourceMatchValue(final DataSourceMatchingDefinition dataSourceMatchingDefinition) {
+    public DefaultDataSourceMatchValue(final DataSourceMatchingDefinition dataSourceMatchingDefinition) {
 
         notNull(dataSourceMatchingDefinition, "Mandatory argument 'dataSourceMatchingDefinition' is missing.");
         this.dataSourceMatchingDefinition = dataSourceMatchingDefinition;

@@ -20,7 +20,7 @@ public class DefaultDataSourceRowMatchValue implements DataSourceRowMatchValue {
     private String resultsAnnotation;
     private final long rowNumber;
 
-    private DefaultDataSourceRowMatchValue(final long rowNumber) {
+    public DefaultDataSourceRowMatchValue(final long rowNumber) {
 
         state(rowNumber >= 0, "Invalid argument, row number should be >= 0");
         this.rowNumber = rowNumber;
