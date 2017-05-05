@@ -1,6 +1,6 @@
 package com.gds.dsmatch.matching.builder;
 
-import com.gds.dsmatch.matching.DecimalMatchingStrategy;
+import com.gds.dsmatch.matching.DefaultMatchingStrategy;
 import com.gds.dsmatch.matching.MatchingStrategyVisitor;
 
 import java.math.BigDecimal;
@@ -34,7 +34,7 @@ public class DecimalMatchingStrategyBuilder {
         return this;
     }
 
-    public DecimalMatchingStrategy build() {
-        return new DecimalMatchingStrategy(matchingStrategies);
+    public MatchingStrategyVisitor<BigDecimal> build() {
+        return new DefaultMatchingStrategy<>(matchingStrategies);
     }
 }

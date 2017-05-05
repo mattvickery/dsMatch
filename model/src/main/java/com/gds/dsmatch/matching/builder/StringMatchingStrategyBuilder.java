@@ -1,7 +1,7 @@
 package com.gds.dsmatch.matching.builder;
 
+import com.gds.dsmatch.matching.DefaultMatchingStrategy;
 import com.gds.dsmatch.matching.MatchingStrategyVisitor;
-import com.gds.dsmatch.matching.StringMatchingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +41,8 @@ public class StringMatchingStrategyBuilder {
         return this;
     }
 
-    public StringMatchingStrategy build() {
+    public MatchingStrategyVisitor<String> build() {
         state(matchingStrategies.size() > 0, "No matching strategies have been configured.");
-        return new StringMatchingStrategy(matchingStrategies);
+        return new DefaultMatchingStrategy<>(matchingStrategies);
     }
 }

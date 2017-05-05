@@ -2,6 +2,7 @@ package com.gds.dsmatch.matching;
 
 import com.gds.dsmatch.model.DataSourceFieldPairMatchValue;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,20 +12,20 @@ import static org.springframework.util.Assert.notNull;
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 28/04/2017
  */
-public class StringMatchingStrategy implements MatchingStrategyVisitor<String> {
+public class DefaultMatchingStrategy<T extends Serializable> implements MatchingStrategyVisitor<T> {
 
-    private final List<MatchingStrategyVisitor<String>> matchingStrategies;
+    private final List<MatchingStrategyVisitor<T>> matchingStrategies;
 
-    public StringMatchingStrategy(final List<MatchingStrategyVisitor<String>> matchingStrategies) {
+    public DefaultMatchingStrategy(final List<MatchingStrategyVisitor<T>> matchingStrategies) {
         notNull(matchingStrategies, "Mandatory argument 'matchingStrategies' is missing.");
         this.matchingStrategies = matchingStrategies;
     }
 
     @Override
-    public boolean visit(final DataSourceFieldPairMatchValue<String> dataSourceFieldPairMatchValue) {
+    public boolean visit(final DataSourceFieldPairMatchValue<T> dataSourceFieldPairMatchValue) {
 
         notNull(dataSourceFieldPairMatchValue, "Mandatory argument 'dataSourceFieldPairMatchValue' is missing.");
-        final List<MatchingStrategyVisitor<String>> failures = matchingStrategies.stream()
+        final List<MatchingStrategyVisitor<T>> failures = matchingStrategies.stream()
                 .filter(dataSourceFieldPairMatchValue::match)
                 .collect(Collectors.toList());
         return failures.size() > 0;
