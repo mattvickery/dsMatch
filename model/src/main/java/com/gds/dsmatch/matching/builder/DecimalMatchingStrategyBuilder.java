@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.util.Assert.notNull;
+
 /**
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 28/04/2017
@@ -24,17 +26,11 @@ public class DecimalMatchingStrategyBuilder {
 
     public DecimalMatchingStrategyBuilder addEqualsWithTolerance(final BigDecimal tolerance) {
 
-        matchingStrategies.add(dataSourceFieldPairMatchValue -> {
-            if ((dataSourceFieldPairMatchValue.getDataSourceRhsValue().getDataSourceFieldValue().compareTo(
-                    dataSourceFieldPairMatchValue.getDataSourceLhsValue().getDataSourceFieldValue().add(tolerance)
-            ) > 0) &&
-                    (dataSourceFieldPairMatchValue.getDataSourceRhsValue().getDataSourceFieldValue().compareTo(
-                            dataSourceFieldPairMatchValue.getDataSourceLhsValue()
-                                    .getDataSourceFieldValue().subtract(tolerance)
-                    ) < 0))
-                return true;
-            return false;
-        });
+        notNull(tolerance, "Mandatory argument 'tolerance' is missing.");
+        matchingStrategies.add(dataSourceFieldPairMatchValue -> dataSourceFieldPairMatchValue.getDataSourceRhsValue()
+                .getDataSourceFieldValue().abs().subtract(
+                    dataSourceFieldPairMatchValue.getDataSourceLhsValue().getDataSourceFieldValue().abs()
+                ).compareTo(tolerance) <= 0);
         return this;
     }
 
