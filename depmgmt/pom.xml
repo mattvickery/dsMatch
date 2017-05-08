@@ -19,6 +19,7 @@
         <apache-commons-lang3.version>3.4</apache-commons-lang3.version>
         <slf4j-api.version>1.7.7</slf4j-api.version>
         <slf4j-log4j.version>1.6.1</slf4j-log4j.version>
+        <org-apache-poi.version>3.16</org-apache-poi.version>
         <jdk.version>1.8</jdk.version>
     </properties>
 
@@ -65,6 +66,29 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j-log4j.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${org-apache-poi.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${org-apache-poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${org-apache-poi.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
