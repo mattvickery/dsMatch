@@ -11,4 +11,5 @@ import java.io.Serializable;
 public interface ApiResponse<R extends ApiRequest> extends Serializable {
     ApiDataSourceRowDefinition getApiDataSourceRowDefinition();
     R getApiRequest();
+    ApiResponseProcessingResult getProcessingResult();
 }

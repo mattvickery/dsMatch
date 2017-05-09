@@ -58,10 +58,9 @@ public class ExcelRequestToResponseTransformer
 
     private ApiTransformer<DataSourceRowDefinition, ApiDataSourceRowDefinition> getResponseTransformer() {
         return source -> {
-            return () -> {
-                return source.getDataSourceFieldDefinitions().stream()
-                        .map(this :: transform).collect(Collectors.toList());
-            };
+            notNull(source, "Mandatory argument 'source' is missing.");
+            return () -> source.getDataSourceFieldDefinitions().stream()
+                    .map(this :: transform).collect(Collectors.toList());
         };
     }
 
