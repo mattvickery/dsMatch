@@ -1,8 +1,7 @@
 package com.gds.dsmatch.model;
 
-import com.gds.dsmatch.matching.MatchingStrategyVisitor;
-
 import java.io.Serializable;
+import java.util.function.Function;
 
 /**
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
@@ -13,5 +12,5 @@ public interface DataSourceFieldCompositeValue<T extends Serializable> {
     DataSourceFieldValue<T> getDataSourceLhsValue();
     DataSourceFieldValue<T> getDataSourceRhsValue();
     boolean getMatched();
-    boolean match(final MatchingStrategyVisitor matchingStrategyVisitor);
+    boolean match(final Function<DataSourceFieldCompositeValue<T>, Boolean> matchingStrategyVisitor);
 }
