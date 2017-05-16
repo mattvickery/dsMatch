@@ -1,8 +1,8 @@
 package com.gds.dsmatch.matching;
 
 import com.gds.dsmatch.matching.builder.DecimalMatchingStrategyBuilder;
-import com.gds.dsmatch.model.DataSourceFieldPairMatchValue;
-import com.gds.dsmatch.model.impl.DefaultDataSourceFieldPairMatchValue;
+import com.gds.dsmatch.model.DataSourceFieldCompositeValue;
+import com.gds.dsmatch.model.impl.DefaultDataSourceFieldCompositeValue;
 import com.gds.dsmatch.model.impl.DefaultDataSourceFieldValue;
 import com.gds.dsmatch.model.type.DataSourceFieldDefinition;
 import com.gds.dsmatch.model.type.impl.DefaultDataSourceFieldDefinition;
@@ -32,8 +32,8 @@ public class DecimalMatchingStrategyTest {
     @Test
     public void equals_identical() {
 
-        final DataSourceFieldPairMatchValue<BigDecimal> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<BigDecimal> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(rate, BigDecimal.ONE),
                 new DefaultDataSourceFieldValue<>(rate, BigDecimal.ONE)
         );
@@ -44,8 +44,8 @@ public class DecimalMatchingStrategyTest {
     @Test
     public void equals_different() {
 
-        final DataSourceFieldPairMatchValue<BigDecimal> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<BigDecimal> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(rate, BigDecimal.ONE),
                 new DefaultDataSourceFieldValue<>(rate, BigDecimal.TEN)
         );
@@ -56,8 +56,8 @@ public class DecimalMatchingStrategyTest {
     @Test
     public void equals_tolerance_1() {
 
-        final DataSourceFieldPairMatchValue<BigDecimal> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<BigDecimal> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(rate, new BigDecimal("5.2")),
                 new DefaultDataSourceFieldValue<>(rate, new BigDecimal("5.4"))
         );
@@ -68,8 +68,8 @@ public class DecimalMatchingStrategyTest {
     @Test
     public void equals_tolerance_2() {
 
-        final DataSourceFieldPairMatchValue<BigDecimal> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<BigDecimal> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(rate, new BigDecimal("5.1")),
                 new DefaultDataSourceFieldValue<>(rate, new BigDecimal("5.4"))
         );
@@ -80,8 +80,8 @@ public class DecimalMatchingStrategyTest {
     @Test
     public void equals_tolerance_3() {
 
-        final DataSourceFieldPairMatchValue<BigDecimal> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<BigDecimal> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(rate, new BigDecimal("5.3")),
                 new DefaultDataSourceFieldValue<>(rate, new BigDecimal("5.4"))
         );

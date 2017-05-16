@@ -1,7 +1,7 @@
 package com.gds.dsmatch.model.impl;
 
 import com.gds.dsmatch.matching.MatchingStrategyVisitor;
-import com.gds.dsmatch.model.DataSourceFieldPairMatchValue;
+import com.gds.dsmatch.model.DataSourceFieldCompositeValue;
 import com.gds.dsmatch.model.DataSourceFieldValue;
 
 import java.io.Serializable;
@@ -13,16 +13,16 @@ import static org.springframework.util.Assert.state;
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 28/04/2017
  */
-public class DefaultDataSourceFieldPairMatchValue<T extends Serializable>
-        implements DataSourceFieldPairMatchValue <T> {
+public class DefaultDataSourceFieldCompositeValue<T extends Serializable>
+        implements DataSourceFieldCompositeValue<T> {
 
     private final DataSourceFieldValue<T> lhs;
     private final DataSourceFieldValue<T> rhs;
     private boolean matched = true;
     private boolean matchInvocationCompleted = false;
 
-    public DefaultDataSourceFieldPairMatchValue(final DataSourceFieldValue<T> lhs,
-                                                 final DataSourceFieldValue<T> rhs) {
+    public DefaultDataSourceFieldCompositeValue(final DataSourceFieldValue<T> lhs,
+                                                final DataSourceFieldValue<T> rhs) {
 
         notNull(lhs, "Mandatory argument 'lhs' is missing.");
         notNull(rhs, "Mandatory argument 'rhs' is missing.");

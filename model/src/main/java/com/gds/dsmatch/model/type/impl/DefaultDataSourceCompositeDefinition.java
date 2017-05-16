@@ -1,8 +1,8 @@
 package com.gds.dsmatch.model.type.impl;
 
-import com.gds.dsmatch.model.type.DataSourceMatchingDefinition;
+import com.gds.dsmatch.model.type.DataSourceCompositeDefinition;
 import com.gds.dsmatch.model.type.DataSourceRowDefinition;
-import com.gds.dsmatch.model.type.MatchKeyDefinition;
+import com.gds.dsmatch.model.type.DataSourceKeyDefinition;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,27 +13,26 @@ import static org.springframework.util.Assert.notNull;
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 04/05/2017
  */
-public class DefaultDataSourceMatchingDefinition implements DataSourceMatchingDefinition {
+public class DefaultDataSourceCompositeDefinition implements DataSourceCompositeDefinition {
 
-    private final List<MatchKeyDefinition> matchKeyDefinitions;
+    private final List<DataSourceKeyDefinition> dataSourceKeyDefinitions;
     private final DataSourceRowDefinition lhs;
     private final DataSourceRowDefinition rhs;
 
-    public DefaultDataSourceMatchingDefinition(final List<MatchKeyDefinition> matchKeyDefinitions,
+    public DefaultDataSourceCompositeDefinition(final List<DataSourceKeyDefinition> dataSourceKeyDefinitions,
                                                 final DataSourceRowDefinition lhs,
                                                 final DataSourceRowDefinition rhs) {
 
-        notNull(matchKeyDefinitions, "Mandatory argument 'matchKeyDefinitions' is missing.");
+        notNull(dataSourceKeyDefinitions, "Mandatory argument 'dataSourceKeyDefinitions' is missing.");
         notNull(lhs, "Mandatory argument 'lhs' is missing.");
         notNull(rhs, "Mandatory argument 'rhs' is missing.");
-        this.matchKeyDefinitions = matchKeyDefinitions;
+        this.dataSourceKeyDefinitions = dataSourceKeyDefinitions;
         this.lhs = lhs;
         this.rhs = rhs;
     }
 
-    @Override
-    public List<MatchKeyDefinition> getMatchKeyDefinitions() {
-        return Collections.unmodifiableList(matchKeyDefinitions);
+    public List<DataSourceKeyDefinition> getDataSourceKeyDefinitions() {
+        return Collections.unmodifiableList(dataSourceKeyDefinitions);
     }
 
     @Override

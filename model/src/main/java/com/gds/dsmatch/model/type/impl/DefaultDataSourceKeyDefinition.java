@@ -2,7 +2,7 @@ package com.gds.dsmatch.model.type.impl;
 
 import com.gds.dsmatch.model.type.DataSourceFieldDefinition;
 import com.gds.dsmatch.model.type.DataSourceFieldDefinitionTuple;
-import com.gds.dsmatch.model.type.MatchKeyDefinition;
+import com.gds.dsmatch.model.type.DataSourceKeyDefinition;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,30 +15,30 @@ import static org.springframework.util.Assert.state;
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 04/05/2017
  */
-public class DefaultMatchKeyDefinition implements MatchKeyDefinition {
+public class DefaultDataSourceKeyDefinition implements DataSourceKeyDefinition {
 
-    private final String matchKeyDefinitionName;
-    private final List<DataSourceFieldDefinitionTuple> matchKeys = new ArrayList<>();
+    private final String keyDefinitionName;
+    private final List<DataSourceFieldDefinitionTuple> keyDefinitions = new ArrayList<>();
 
-    public DefaultMatchKeyDefinition(final String matchKeyDefinitionName) {
-        notNull(matchKeyDefinitionName, "Mandatory argument 'matchKeyDefinitionName' is missing.");
-        state(matchKeyDefinitionName.length() > 0, "Invalid empty argument 'matchKeyDefinitionName'.");
-        this.matchKeyDefinitionName = matchKeyDefinitionName;
+    public DefaultDataSourceKeyDefinition(final String keyDefinitionName) {
+        notNull(keyDefinitionName, "Mandatory argument 'keyDefinitionName' is missing.");
+        state(keyDefinitionName.length() > 0, "Invalid empty argument 'keyDefinitionName'.");
+        this.keyDefinitionName = keyDefinitionName;
     }
 
 
     @Override
-    public String getMatchKeyDefinitionName() {
-        return matchKeyDefinitionName;
+    public String getKeyDefinitionName() {
+        return keyDefinitionName;
     }
 
     @Override
-    public MatchKeyDefinition addMatchKeyPair(final DataSourceFieldDefinition<?> lhs,
+    public DataSourceKeyDefinition addKeyPair(final DataSourceFieldDefinition<?> lhs,
                                               final DataSourceFieldDefinition<?> rhs) {
 
         notNull(lhs, "Mandatory argument 'lhs' is missing.");
         notNull(rhs, "Mandatory argument 'rhs' is missing.");
-        matchKeys.add(new DataSourceFieldDefinitionTuple() {
+        keyDefinitions.add(new DataSourceFieldDefinitionTuple() {
             @Override
             public DataSourceFieldDefinition<?> getLhs() {
                 return lhs;
@@ -53,7 +53,7 @@ public class DefaultMatchKeyDefinition implements MatchKeyDefinition {
     }
 
     @Override
-    public List<DataSourceFieldDefinitionTuple> getMatchKeys() {
-        return Collections.unmodifiableList(matchKeys);
+    public List<DataSourceFieldDefinitionTuple> getKeyFieldDefinitions() {
+        return Collections.unmodifiableList(keyDefinitions);
     }
 }

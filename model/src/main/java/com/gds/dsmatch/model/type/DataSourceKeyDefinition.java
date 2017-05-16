@@ -6,10 +6,10 @@ import java.util.List;
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 28/04/2017
  */
-public interface MatchKeyDefinition {
+public interface DataSourceKeyDefinition {
 
-    String getMatchKeyDefinitionName();
-    MatchKeyDefinition addMatchKeyPair(final DataSourceFieldDefinition<?> lhs,
+    String getKeyDefinitionName();
+    DataSourceKeyDefinition addKeyPair(final DataSourceFieldDefinition<?> lhs,
                                        final DataSourceFieldDefinition<?> rhs);
-    List<DataSourceFieldDefinitionTuple> getMatchKeys();
+    List<DataSourceFieldDefinitionTuple> getKeyFieldDefinitions();
 }

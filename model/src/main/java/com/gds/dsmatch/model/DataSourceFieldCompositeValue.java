@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 28/04/2017
  */
-public interface DataSourceFieldPairMatchValue <T extends Serializable> {
+public interface DataSourceFieldCompositeValue<T extends Serializable> {
 
     DataSourceFieldValue<T> getDataSourceLhsValue();
     DataSourceFieldValue<T> getDataSourceRhsValue();

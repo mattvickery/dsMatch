@@ -1,8 +1,8 @@
 package com.gds.dsmatch.model.impl;
 
-import com.gds.dsmatch.model.DataSourceFieldPairMatchValue;
+import com.gds.dsmatch.model.DataSourceFieldCompositeValue;
 import com.gds.dsmatch.model.DataSourceFieldValue;
-import com.gds.dsmatch.model.DataSourceRowMatchValue;
+import com.gds.dsmatch.model.DataSourceRowCompositeValue;
 import com.gds.dsmatch.model.type.DataSourceFieldDefinition;
 import com.gds.dsmatch.model.type.impl.DefaultDataSourceFieldDefinition;
 import org.junit.Test;
@@ -16,38 +16,38 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 05/05/2017
  */
-public class DefaultDataSourceRowMatchValueTest {
+public class DefaultDataSourceRowCompositeValueTest {
 
-    private final DataSourceRowMatchValue rowMatchValue = new DefaultDataSourceRowMatchValue(0L);
+    private final DataSourceRowCompositeValue rowMatchValue = new DefaultDataSourceRowCompositeValue(0L);
     private final DataSourceFieldDefinition<BigDecimal> rate
             = new DefaultDataSourceFieldDefinition<>("Rate", BigDecimal.class);
     private final DataSourceFieldValue<BigDecimal> lhs = new DefaultDataSourceFieldValue<>(rate, BigDecimal.ONE);
     private final DataSourceFieldValue<BigDecimal> rhs = new DefaultDataSourceFieldValue<>(rate, BigDecimal.TEN);
-    private final DataSourceFieldPairMatchValue<BigDecimal> fieldPairMatchValue
-            = new DefaultDataSourceFieldPairMatchValue<>(lhs, rhs);
+    private final DataSourceFieldCompositeValue<BigDecimal> fieldPairMatchValue
+            = new DefaultDataSourceFieldCompositeValue<>(lhs, rhs);
 
     @Test(expected = IllegalStateException.class)
     public void constructor_1() {
-        new DefaultDataSourceRowMatchValue(-1L);
+        new DefaultDataSourceRowCompositeValue(-1L);
     }
 
     @Test (expected = UnsupportedOperationException.class)
     public void unmodifiableFieldPairMatchValues_add() {
-        rowMatchValue.getDataSourceFieldPairMatchValue().add(fieldPairMatchValue);
+        rowMatchValue.getDataSourceFieldCompositeValues().add(fieldPairMatchValue);
     }
 
     @Test (expected = UnsupportedOperationException.class)
     public void unmodifiableFieldPairMatchValues_remove() {
         rowMatchValue.add(fieldPairMatchValue);
-        rowMatchValue.getDataSourceFieldPairMatchValue().remove(0);
+        rowMatchValue.getDataSourceFieldCompositeValues().remove(0);
     }
 
     @Test
     public void addRetrieve() {
-        assertThat(rowMatchValue.getDataSourceFieldPairMatchValue().size(), is(0));
+        assertThat(rowMatchValue.getDataSourceFieldCompositeValues().size(), is(0));
         rowMatchValue.add(fieldPairMatchValue);
-        assertThat(rowMatchValue.getDataSourceFieldPairMatchValue().size(), is(1));
-        assertThat(rowMatchValue.getDataSourceFieldPairMatchValue().get(0), is(fieldPairMatchValue));
+        assertThat(rowMatchValue.getDataSourceFieldCompositeValues().size(), is(1));
+        assertThat(rowMatchValue.getDataSourceFieldCompositeValues().get(0), is(fieldPairMatchValue));
     }
 
     @Test

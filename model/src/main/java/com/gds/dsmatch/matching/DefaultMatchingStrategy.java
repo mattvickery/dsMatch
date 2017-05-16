@@ -1,6 +1,6 @@
 package com.gds.dsmatch.matching;
 
-import com.gds.dsmatch.model.DataSourceFieldPairMatchValue;
+import com.gds.dsmatch.model.DataSourceFieldCompositeValue;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,11 +22,11 @@ public class DefaultMatchingStrategy<T extends Serializable> implements Matching
     }
 
     @Override
-    public boolean visit(final DataSourceFieldPairMatchValue<T> dataSourceFieldPairMatchValue) {
+    public boolean visit(final DataSourceFieldCompositeValue<T> dataSourceFieldCompositeValue) {
 
-        notNull(dataSourceFieldPairMatchValue, "Mandatory argument 'dataSourceFieldPairMatchValue' is missing.");
+        notNull(dataSourceFieldCompositeValue, "Mandatory argument 'dataSourceFieldPairMatchValue' is missing.");
         final List<MatchingStrategyVisitor<T>> failures = matchingStrategies.stream()
-                .filter(dataSourceFieldPairMatchValue::match)
+                .filter(dataSourceFieldCompositeValue::match)
                 .collect(Collectors.toList());
         return failures.size() > 0;
     }

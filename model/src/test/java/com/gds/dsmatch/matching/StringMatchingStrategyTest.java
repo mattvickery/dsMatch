@@ -1,8 +1,8 @@
 package com.gds.dsmatch.matching;
 
 import com.gds.dsmatch.matching.builder.StringMatchingStrategyBuilder;
-import com.gds.dsmatch.model.DataSourceFieldPairMatchValue;
-import com.gds.dsmatch.model.impl.DefaultDataSourceFieldPairMatchValue;
+import com.gds.dsmatch.model.DataSourceFieldCompositeValue;
+import com.gds.dsmatch.model.impl.DefaultDataSourceFieldCompositeValue;
 import com.gds.dsmatch.model.impl.DefaultDataSourceFieldValue;
 import com.gds.dsmatch.model.type.DataSourceFieldDefinition;
 import com.gds.dsmatch.model.type.impl.DefaultDataSourceFieldDefinition;
@@ -35,8 +35,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void equals_identical() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name")
         );
@@ -47,8 +47,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void equals_incorrectCase() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "Name")
         );
@@ -59,8 +59,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void equalsIgnoreCase_identical() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name")
         );
@@ -71,8 +71,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void equalsIgnoreCase_oneCharIncorrectCase() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "Name")
         );
@@ -83,8 +83,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void equalsIgnoreCase_allCharIncorrectCase() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "NAME")
         );
@@ -95,8 +95,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void equalsIgnoreCase_differentWord() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "HELLO")
         );
@@ -107,8 +107,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void equalsIgnoreCaseAndStartsWith_identical() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "name")
         );
@@ -119,8 +119,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void equalsIgnoreCaseAndStartsWith_wrongStartsWith() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "hello"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "hello")
         );
@@ -131,8 +131,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void startsWith_identical() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "hello"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "hello")
         );
@@ -143,8 +143,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void startsWith_identicalFirstThreeCharsOnly() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "hello"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "help")
         );
@@ -155,8 +155,8 @@ public class StringMatchingStrategyTest {
     @Test
     public void startsWith_differentWords() {
 
-        final DataSourceFieldPairMatchValue<String> candidateMatchPair
-                = new DefaultDataSourceFieldPairMatchValue<>(
+        final DataSourceFieldCompositeValue<String> candidateMatchPair
+                = new DefaultDataSourceFieldCompositeValue<>(
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "hello"),
                 new DefaultDataSourceFieldValue<>(stringFieldDefinition, "halo")
         );

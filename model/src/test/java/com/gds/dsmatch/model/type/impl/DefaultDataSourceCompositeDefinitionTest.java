@@ -1,9 +1,9 @@
 package com.gds.dsmatch.model.type.impl;
 
 import com.gds.dsmatch.model.type.DataSourceFieldDefinition;
-import com.gds.dsmatch.model.type.DataSourceMatchingDefinition;
+import com.gds.dsmatch.model.type.DataSourceCompositeDefinition;
 import com.gds.dsmatch.model.type.DataSourceRowDefinition;
-import com.gds.dsmatch.model.type.MatchKeyDefinition;
+import com.gds.dsmatch.model.type.DataSourceKeyDefinition;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ import static org.hamcrest.core.Is.is;
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 05/05/2017
  */
-public class DefaultDataSourceMatchingDefinitionTest {
+public class DefaultDataSourceCompositeDefinitionTest {
 
-    private final List<MatchKeyDefinition> matchKeyDefinition = new ArrayList<>();
+    private final List<DataSourceKeyDefinition> dataSourceKeyDefinition = new ArrayList<>();
     private final DataSourceFieldDefinition<String> name
             = new DefaultDataSourceFieldDefinition<>("Name", String.class);
     private final List<DataSourceFieldDefinition<?>> dataSourceFieldDefinitions
@@ -30,42 +30,42 @@ public class DefaultDataSourceMatchingDefinitionTest {
 
     @Test
     public void constructorNonNullArguments() {
-        new DefaultDataSourceMatchingDefinition(matchKeyDefinition, lhs, rhs);
+        new DefaultDataSourceCompositeDefinition(dataSourceKeyDefinition, lhs, rhs);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void constructor_nullArguments_1() {
-        new DefaultDataSourceMatchingDefinition(null, lhs, rhs);
+        new DefaultDataSourceCompositeDefinition(null, lhs, rhs);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void constructor_nullArguments_2() {
-        new DefaultDataSourceMatchingDefinition(matchKeyDefinition, null, rhs);
+        new DefaultDataSourceCompositeDefinition(dataSourceKeyDefinition, null, rhs);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void constructor_nullArguments_3() {
-        new DefaultDataSourceMatchingDefinition(matchKeyDefinition, lhs, null);
+        new DefaultDataSourceCompositeDefinition(dataSourceKeyDefinition, lhs, null);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void constructor_nullArguments_4() {
-        new DefaultDataSourceMatchingDefinition(null, null, null);
+        new DefaultDataSourceCompositeDefinition(null, null, null);
     }
 
     @Test (expected = UnsupportedOperationException.class)
     public void unmodifiableCollection() {
-        final DataSourceMatchingDefinition matchingDefinition
-                = new DefaultDataSourceMatchingDefinition(matchKeyDefinition, lhs, rhs);
-        matchingDefinition.getMatchKeyDefinitions().clear();
+        final DataSourceCompositeDefinition matchingDefinition
+                = new DefaultDataSourceCompositeDefinition(dataSourceKeyDefinition, lhs, rhs);
+        matchingDefinition.getDataSourceKeyDefinitions().clear();
     }
 
     @Test
     public void simpleSetupAndTest() {
-        final DataSourceMatchingDefinition matchingDefinition
-                = new DefaultDataSourceMatchingDefinition(matchKeyDefinition, lhs, rhs);
+        final DataSourceCompositeDefinition matchingDefinition
+                = new DefaultDataSourceCompositeDefinition(dataSourceKeyDefinition, lhs, rhs);
         assertThat(matchingDefinition.getLhs(), is(lhs));
         assertThat(matchingDefinition.getRhs(), is(rhs));
-        assertThat(matchingDefinition.getMatchKeyDefinitions().size(), is(0));
+        assertThat(matchingDefinition.getDataSourceKeyDefinitions().size(), is(0));
     }
 }
