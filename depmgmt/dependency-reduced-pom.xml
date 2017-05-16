@@ -36,6 +36,7 @@
     <apache-commons-lang3.version>3.4</apache-commons-lang3.version>
     <spring-batch.version>3.0.7.RELEASE</spring-batch.version>
     <spring.version>4.3.8.RELEASE</spring.version>
+    <org-apache-poi.version>3.16</org-apache-poi.version>
     <slf4j-log4j.version>1.6.1</slf4j-log4j.version>
     <spring-integration.version>4.3.8.RELEASE</spring-integration.version>
   </properties>

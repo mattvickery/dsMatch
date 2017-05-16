@@ -27,6 +27,8 @@
         <module>api</module>
         <module>model</module>
         <module>transform</module>
+        <module>model-pojo</module>
+        <module>matching</module>
     </modules>
 
 

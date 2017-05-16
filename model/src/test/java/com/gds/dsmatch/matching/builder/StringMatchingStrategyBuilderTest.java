@@ -1,8 +1,8 @@
 package com.gds.dsmatch.matching.builder;
 
 import com.gds.dsmatch.matching.MatchingStrategyVisitor;
-import com.gds.dsmatch.model.DataSourceFieldPairMatchValue;
-import com.gds.dsmatch.model.impl.DefaultDataSourceFieldPairMatchValue;
+import com.gds.dsmatch.model.DataSourceFieldCompositeValue;
+import com.gds.dsmatch.model.impl.DefaultDataSourceFieldCompositeValue;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -18,8 +18,8 @@ import static org.mockito.Mockito.verify;
  */
 public class StringMatchingStrategyBuilderTest {
 
-    private DataSourceFieldPairMatchValue<String> candidateMatchPair
-            = mock(DefaultDataSourceFieldPairMatchValue.class);
+    private DataSourceFieldCompositeValue<String> candidateMatchPair
+            = mock(DefaultDataSourceFieldCompositeValue.class);
 
     @Before
     public void before() {

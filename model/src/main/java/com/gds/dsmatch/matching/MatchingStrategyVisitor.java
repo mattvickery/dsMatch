@@ -1,6 +1,6 @@
 package com.gds.dsmatch.matching;
 
-import com.gds.dsmatch.model.DataSourceFieldPairMatchValue;
+import com.gds.dsmatch.model.DataSourceFieldCompositeValue;
 
 import java.io.Serializable;
 
@@ -9,5 +9,5 @@ import java.io.Serializable;
  * @since 28/04/2017
  */
 public interface MatchingStrategyVisitor<T extends Serializable> {
-    boolean visit(final DataSourceFieldPairMatchValue<T> dataSourceFieldPairMatchValue);
+    boolean visit(final DataSourceFieldCompositeValue<T> dataSourceFieldCompositeValue);
 }
