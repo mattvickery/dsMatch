@@ -1,9 +1,9 @@
 package com.gds.dsmatch.transform.excel;
 
+import com.gds.dsmatch.model.pojo.type.DefaultDataSourceFieldDefinition;
+import com.gds.dsmatch.model.pojo.type.DefaultDataSourceRowDefinition;
 import com.gds.dsmatch.model.type.DataSourceFieldDefinition;
 import com.gds.dsmatch.model.type.DataSourceRowDefinition;
-import com.gds.dsmatch.model.type.impl.DefaultDataSourceFieldDefinition;
-import com.gds.dsmatch.model.type.impl.DefaultDataSourceRowDefinition;
 import com.gds.dsmatch.transform.DataSourceModelTransformer;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
