@@ -1,5 +1,6 @@
-package com.gds.dsmatch.matching;
+package com.gds.dsmatch.matching.builder;
 
+import com.gds.dsmatch.matching.BooleanMatchingStrategyBuilder;
 import com.gds.dsmatch.model.DataSourceFieldCompositeValue;
 import com.gds.dsmatch.model.pojo.DefaultDataSourceFieldCompositeValue;
 import org.junit.Before;
@@ -15,11 +16,11 @@ import static org.mockito.Mockito.verify;
 
 /**
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
- * @since 04/05/2017
+ * @since 26/05/2017
  */
-public class StringMatchingStrategyBuilderTest {
+public class BooleanMatchingStrategyBuilderTest {
 
-    private DataSourceFieldCompositeValue<String> candidateMatchPair
+    private DataSourceFieldCompositeValue<Boolean> candidateMatchPair
             = mock(DefaultDataSourceFieldCompositeValue.class);
 
     @Before
@@ -29,22 +30,14 @@ public class StringMatchingStrategyBuilderTest {
 
     @Test (expected = IllegalStateException.class)
     public void emptyBuilder() {
-        new StringMatchingStrategyBuilder().build();
+        new BooleanMatchingStrategyBuilder().build();
     }
 
     @Test
     public void singleStrategy() {
-        final Function<DataSourceFieldCompositeValue<String>, Boolean> equalsIgnoreCase
-                = new StringMatchingStrategyBuilder().addEqualsIgnoreCase().build();
-        equalsIgnoreCase.apply(candidateMatchPair);
+        final Function<DataSourceFieldCompositeValue<Boolean>, Boolean> matchFunction
+                = new BooleanMatchingStrategyBuilder().addExactEquals().build();
+        matchFunction.apply(candidateMatchPair);
         verify(candidateMatchPair, times(1)).match(any());
-    }
-
-    @Test
-    public void multipleStrategies() {
-        final Function<DataSourceFieldCompositeValue<String>, Boolean> equalsIgnoreCase
-                = new StringMatchingStrategyBuilder().addEqualsIgnoreCase().addStartsWith("x").build();
-        equalsIgnoreCase.apply(candidateMatchPair);
-        verify(candidateMatchPair, times(2)).match(any());
     }
 }

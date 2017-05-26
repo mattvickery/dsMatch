@@ -17,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 26/05/2017
  */
-public class DateMatchingStrategyBuilderTest {
+public class DateMatchingStrategyTest {
 
     private static final int DAY = 1;
     private static final int MONTH = 5;

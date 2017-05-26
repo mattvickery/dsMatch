@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
+import static org.springframework.util.Assert.state;
+
 /**
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
  * @since 28/04/2017
@@ -26,10 +28,10 @@ public class DateMatchingStrategyBuilder {
     public DateMatchingStrategyBuilder addEqualsWithTolerance(final int daysTolerance) {
 
         matchingStrategies.add(dataSourceFieldPairMatchValue -> {
-
-            LocalDate lhsValue = dataSourceFieldPairMatchValue.getDataSourceLhsValue().getDataSourceFieldValue();
-            LocalDate rhsValue = dataSourceFieldPairMatchValue.getDataSourceRhsValue().getDataSourceFieldValue();
-            if ((lhsValue.isBefore(rhsValue.plusDays(daysTolerance+1))) && (lhsValue.isAfter(rhsValue.minusDays(daysTolerance+1))))
+            final LocalDate lhsValue = dataSourceFieldPairMatchValue.getDataSourceLhsValue().getDataSourceFieldValue();
+            final LocalDate rhsValue = dataSourceFieldPairMatchValue.getDataSourceRhsValue().getDataSourceFieldValue();
+            if ((lhsValue.isBefore(rhsValue.plusDays(daysTolerance+1)))
+                    && (lhsValue.isAfter(rhsValue.minusDays(daysTolerance+1))))
                 return Boolean.TRUE;
             return Boolean.FALSE;
         });
@@ -37,6 +39,7 @@ public class DateMatchingStrategyBuilder {
     }
 
     public Function<DataSourceFieldCompositeValue<LocalDate>, Boolean> build() {
+        state(matchingStrategies.size() > 0, "No matching strategies have been configured.");
         return new DefaultMatchingStrategy<>(matchingStrategies);
     }
 }

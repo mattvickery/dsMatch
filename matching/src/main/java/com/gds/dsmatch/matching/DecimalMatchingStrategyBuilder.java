@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.function.Function;
 
 import static org.springframework.util.Assert.notNull;
+import static org.springframework.util.Assert.state;
 
 /**
  * @author Matt Vickery (matt.d.vickery@greendotsoftware.co.uk)
@@ -36,6 +37,7 @@ public class DecimalMatchingStrategyBuilder {
     }
 
     public Function<DataSourceFieldCompositeValue<BigDecimal>, Boolean> build() {
+        state(matchingStrategies.size() > 0, "No matching strategies have been configured.");
         return new DefaultMatchingStrategy<>(matchingStrategies);
     }
 }
